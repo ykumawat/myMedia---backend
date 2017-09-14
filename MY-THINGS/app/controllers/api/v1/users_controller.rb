@@ -1,7 +1,12 @@
 class Api::V1::UsersController < ApplicationController
   def index
-    @user = User.find_by(name: params[:q])
-    render json: @user, status: 200
+    if params[:q]
+      @user = User.find_by(name: params[:q])
+      render json: @user, status: 200
+    else
+      @users = User.all
+      render json: @users, status: 200
+    end
   end
 
   def edit
@@ -10,7 +15,8 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    @thing = Thing.find(params[:things][:id])
+    @user.things << @thing
     render json: @user, status: 200
   end
 
