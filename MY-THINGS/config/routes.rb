@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :things, only: [:index, :create]
-      resources :users, except: [:show, :delete, :edit, :update, :destroy]
+      resources :users, except: [:show, :delete, :destroy] #added edit and update as routes
       get 'users/showusersthings', to: 'users#showusersthings', as: 'user_showusersthings'
     end
   end

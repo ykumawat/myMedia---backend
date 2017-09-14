@@ -10,12 +10,12 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(thing_params)
+    @user = User.create(user_params)
     render json: @user, status: 201
   end
 
   private
   def user_params
-    params.permit(:title)
+    params.permit(:name)
   end
 end

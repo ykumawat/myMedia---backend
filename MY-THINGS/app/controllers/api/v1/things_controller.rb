@@ -11,6 +11,6 @@ class Api::V1::ThingsController < ApplicationController
 
   private
   def thing_params
-    params.permit(:body)
+    params.permit(:title)
   end
 end
