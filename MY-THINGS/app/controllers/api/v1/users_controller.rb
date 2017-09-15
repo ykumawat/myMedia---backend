@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   def index
     if params[:q]
-      @user = User.find_by(name: params[:q])
+      @user = User.find_or_create_by(name: params[:q])
       render json: @user, status: 200
     else
       @users = User.all
