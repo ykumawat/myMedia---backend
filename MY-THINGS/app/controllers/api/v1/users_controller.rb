@@ -20,6 +20,16 @@ class Api::V1::UsersController < ApplicationController
     render json: @user, status: 200
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @thing = Thing.find(params[:thingid])
+    @user.things.delete(@thing)
+
+    render json: @user, status: 200
+
+
+  end
+
 
   # def showusersthings
   #   @userthings = UserThing.all
